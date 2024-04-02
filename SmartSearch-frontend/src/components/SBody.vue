@@ -1,9 +1,10 @@
 <template lang="">
-    <div class="">
+    <div>
         <el-backtop style="z-index: 1000;" :right="100" :bottom="100" />
-        <el-text>{{result_num}} results found</el-text>
+        <el-text v-if="result_num != null">{{result_num}} results found</el-text>
         <SResultItem v-for="item in items" :item="item"/>
-        <SPage :result_num_numeric="result_num_numeric" :input_data="input_data"/>
+        <el-empty style="margin-top: 46px" :image-size="200"/>
+        <SPage v-if="result_num != null" :result_num_numeric="result_num_numeric" :input_data="input_data"/>
     </div>
 </template>
 <script>
@@ -19,7 +20,7 @@ export default {
         SPage
     },
     setup(){
-        let result_num = ref("");
+        let result_num = ref();
         let result_num_numeric = ref(0)
         let input_data = ref("")
         let items = ref([]);

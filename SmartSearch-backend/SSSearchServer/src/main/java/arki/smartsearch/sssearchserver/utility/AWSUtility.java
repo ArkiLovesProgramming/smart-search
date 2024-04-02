@@ -1,6 +1,7 @@
 package arki.smartsearch.sssearchserver.utility;
 
 
+import com.amazonaws.secretsmanager.caching.SecretCache;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.comprehend.ComprehendClient;
 import software.amazon.awssdk.services.comprehend.model.ComprehendException;
@@ -10,9 +11,12 @@ import software.amazon.awssdk.services.comprehend.model.DetectSentimentResponse;
 import java.util.HashMap;
 
 public class AWSUtility {
+
+    private static final SecretCache cache  = new SecretCache();
+
+    private static final String SecretId = "arn:aws:secretsmanager:ca-central-1:866941515364:secret:rds!db-e7f5ac35-5021-45df-a9c4-7caf575429b7-Xq2NKD";
     public static void main(String[] args) {
-        System.out.println("Calling DetectSentiment");
-        detectSentiments("en", "i am so sad");
+        getSecret();
     }
 
     public static HashMap detectSentiments(String langCode, String text) {
@@ -47,4 +51,11 @@ public class AWSUtility {
         }
         return detectSentimentResult;
     }
+
+    public static String getSecret(){
+        final String secret  = cache.getSecretString(SecretId);
+        return secret;
+    }
+
+
 }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const HOST_NAME = "http://localhost:8080/"
+const HOST_NAME = "https://smartsearch.api.arkilovesprogramming.com/"
 
 const searchApi = {
 

@@ -43,7 +43,7 @@
     </div>
 </template>
 <script>
-    import {reactive, ref} from 'vue'
+    import {onMounted, reactive, ref} from 'vue'
     import { Search } from '@element-plus/icons-vue'
     import eventBus from '../lib/eventBus.js'
 import api from '@/common/api.js'
@@ -51,17 +51,21 @@ import api from '@/common/api.js'
         name: "SHeader",
         setup(){
             let activeIndex = ref('1')
-
             let isLogined = ref();
+            let user = reactive({});
+
+            onMounted(()=>{
+                eventBus.on("header_login", header_login);
+            });
+
             if (localStorage.getItem("user") != undefined){
                 isLogined = ref(true);
             } else {
                 isLogined = ref(false);
             }
-            
-            let user = reactive({});
+
             if (JSON.parse(localStorage.getItem("user"))!=undefined){
-                user = JSON.parse(localStorage.getItem("user"))
+                user.username = JSON.parse(localStorage.getItem("user")).username
             }
 
             let header_login = (user1)=>{
@@ -70,9 +74,6 @@ import api from '@/common/api.js'
                     isLogined.value = true
                 }
             }
-
-            eventBus.on("header_login", header_login);
-
 
             let search_input_content = ref('')
 

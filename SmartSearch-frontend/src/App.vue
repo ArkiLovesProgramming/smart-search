@@ -31,9 +31,9 @@
 
 <script>
 import SHeader from './components/SHeader.vue';
-  import SBody from './components/SBody.vue';
-  import SFooter from './components/SFooter.vue';
-  import SSideVue from './components/SSide.vue';
+import SBody from './components/SBody.vue';
+import SFooter from './components/SFooter.vue';
+import SSideVue from './components/SSide.vue';
   export default {
     name: 'App',
     components: {
@@ -43,7 +43,6 @@ import SHeader from './components/SHeader.vue';
       SSideVue
     },
     setup() {
-      
       return {
 
       }
@@ -59,6 +58,7 @@ import SHeader from './components/SHeader.vue';
   position: absolute;
   top: 0;
   left: 0;
+  height: 100%;
 }
 .el-container {
   width: 100%;
