@@ -1,5 +1,0 @@
-elasticsearch:
-#  uris: http://18.221.14.38:9200
-  uris: http://localhost:9200
-  username: elasticsearch
-  password: elasticsearch
