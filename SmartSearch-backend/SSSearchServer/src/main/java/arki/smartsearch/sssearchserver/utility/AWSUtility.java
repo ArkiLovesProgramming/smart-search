@@ -16,7 +16,7 @@ public class AWSUtility {
 
     private static final String SecretId = "arn:aws:secretsmanager:ca-central-1:866941515364:secret:rds!db-e7f5ac35-5021-45df-a9c4-7caf575429b7-Xq2NKD";
     public static void main(String[] args) {
-        getSecret();
+        System.out.println(getSecret());
     }
 
     public static HashMap detectSentiments(String langCode, String text) {
