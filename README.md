@@ -1,4 +1,7 @@
 # Introduction
+Account for test: 
+username: test
+password: test
 ## 1. Project Outline
 1. This is **web-based** universal search engine project
 2. It adopts **microservices** architecture.
